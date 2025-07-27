@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portfolio - Temitayo Charles</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    body { background: linear-gradient(135deg, #0f172a, #1e293b); color: #f1f5f9; font-family: 'Poppins', sans-serif; overflow-x: hidden; }
+    .navbar { background: rgba(30, 41, 59, 0.9); backdrop-filter: blur(10px); position: sticky; top: 0; z-index: 100; }
+    .hero { min-height: 100vh; display: flex; align-items: center; justify-content: center; text-align: center; background: url('https://source.unsplash.com/random/1920x1080?tech') no-repeat center/cover; position: relative; }
+    .hero::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(to top, rgba(15, 23, 42, 0.7), transparent); }
+    .header-accent { background: linear-gradient(45deg, #00ffcc, #ff00cc); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    .nav-link:hover { color: #00ffcc; transform: scale(1.1); transition: all 0.3s ease; }
+    .profile-img { border-radius: 50%; border: 4px solid #00ffcc; animation: pulse 2s infinite; }
+    @keyframes pulse { 0% { transform: scale(1); } 50% { transform: scale(1.05); } 100% { transform: scale(1); } }
+    .btn-explore { background: linear-gradient(45deg, #ff00cc, #00ffcc); padding: 1rem 2rem; border-radius: 50px; animation: glow 2s infinite; cursor: pointer; }
+    @keyframes glow { 0% { box-shadow: 0 0 10px #00ffcc; } 50% { box-shadow: 0 0 20px #ff00cc; } 100% { box-shadow: 0 0 10px #00ffcc; } }
+    .orbiting-icon { position: absolute; animation: orbit 10s linear infinite; }
+    @keyframes orbit { from { transform: rotate(0deg) translateX(200px) rotate(0deg); } to { transform: rotate(360deg) translateX(200px) rotate(-360deg); } }
+  </style>
+</head>
+<body>
+  <nav class="navbar py-4">
+    <div class="max-w-7xl mx-auto px-4 flex justify-between items-center">
+      <h1 class="text-2xl font-bold text-white">Temitayo Charles</h1>
+      <ul class="flex space-x-6">
+        <li><a href="/portfolio" class="nav-link text-white">Home</a></li>
+        <li><a href="/portfolio/projects/page1" class="nav-link text-white">Projects 1-9</a></li>
+        <li><a href="/portfolio/projects/page2" class="nav-link text-white">Projects 10-18</a></li>
+        <li><a href="/portfolio/about" class="nav-link text-white">About</a></li>
+        <li><a href="/portfolio/contact" class="nav-link text-white">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+  <section class="hero relative">
+    <div class="space-y-6 p-6 bg-black bg-opacity-50 rounded-lg z-10">
+      <img src="profile.jpg" alt="Temitayo Charles" class="profile-img w-32 h-32 mx-auto">
+      <h2 class="text-5xl font-bold header-accent">Mastering Cloud Innovation</h2>
+      <p class="text-xl">Dive into my world of secure, scalable infrastructure solutions.</p>
+      <a href="/portfolio/projects/page1" class="btn-explore text-white no-underline">Explore Projects</a>
+    </div>
+    <img src="https://upload.wikimedia.org/wikipedia/commons/9/95/Amazon_Web_Services_Logo.svg" alt="AWS" class="orbiting-icon" style="top: 20%; left: 10%;">
+    <img src="https://www.hashicorp.com/_next/static/media/terraform.1d1eefe2.svg" alt="Terraform" class="orbiting-icon" style="top: 30%; right: 10%;">
+  </section>
+  <script src="https://cdn.jsdelivr.net/npm/mermaid@10.9.1/dist/mermaid.min.js"></script>
+  <script>mermaid.initialize({ startOnLoad: true, theme: 'dark' });</script>
+</body>
+</html>

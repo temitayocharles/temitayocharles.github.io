@@ -1,0 +1,12 @@
+title: Cloud Infrastructure & Automation Portfolio
+description: Temitayo Charles' showcase of innovative cloud and automation projects.
+theme: jekyll-theme-minimal
+baseurl: "/portfolio"
+url: "https://temitayocharles.github.io"
+markdown: kramdown
+plugins:
+  - jekyll-seo-tag
+  - jekyll-sitemap
+exclude:
+  - Gemfile
+  - Gemfile.lock
