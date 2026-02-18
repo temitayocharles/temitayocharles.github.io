@@ -2,61 +2,13 @@ name: Baseline CI
 
 on:
   push:
-    branches:
-      - "**"
+    branches: [main]
   pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
 
 jobs:
-  validate:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-
-      - name: Setup Python
-        uses: actions/setup-python@v5
-        with:
-          python-version: "3.11"
-
-      - name: Install validators
-        run: |
-          python -m pip install --upgrade pip
-          pip install pyyaml
-
-      - name: Validate YAML syntax
-        shell: bash
-        run: |
-          set -euo pipefail
-          files=$(find . -type f \( -name '*.yml' -o -name '*.yaml' \) -not -path './.git/*')
-          if [ -z "$files" ]; then
-            echo "No YAML files found"
-            exit 0
-          fi
-          python - <<'PY'
-          import yaml
-          from pathlib import Path
-          files = [p for p in Path('.').rglob('*') if p.is_file() and p.suffix in {'.yml', '.yaml'} and '.git' not in p.parts]
-          for f in files:
-              with f.open('r', encoding='utf-8') as fh:
-                  yaml.safe_load(fh)
-          print(f"Validated {len(files)} YAML files")
-          PY
-
-      - name: Validate JSON syntax
-        shell: bash
-        run: |
-          set -euo pipefail
-          files=$(find . -type f -name '*.json' -not -path './.git/*')
-          if [ -z "$files" ]; then
-            echo "No JSON files found"
-            exit 0
-          fi
-          python - <<'PY'
-          import json
-          from pathlib import Path
-          files = [p for p in Path('.').rglob('*.json') if p.is_file() and '.git' not in p.parts]
-          for f in files:
-              with f.open('r', encoding='utf-8') as fh:
-                  json.load(fh)
-          print(f"Validated {len(files)} JSON files")
-          PY
+  baseline:
+    uses: temitayocharles/shared-workflows/.github/workflows/baseline-reusable.yml@main
